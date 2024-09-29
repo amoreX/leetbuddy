@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
 
 body {
   color: var(--foreground);
@@ -13,4 +14,10 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+#signin-container{
+  font-family: "Modak", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
