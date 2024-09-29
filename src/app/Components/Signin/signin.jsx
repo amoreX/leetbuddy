@@ -2,6 +2,7 @@
 
 import "./signin.scss";
 import { motion } from "framer-motion";
+import {signIn} from "next-auth/react"
 export default function Signin() {
     const arrow=(
         <svg
@@ -27,6 +28,11 @@ export default function Signin() {
           />
         </svg>
         );
+    const handleClick=()=>{
+        setTimeout(() => {
+            signIn("google", { callbackUrl: "/Components/Stats" });
+        }, 2000);
+    };
   return (
     <>
       <div id="signin-container">
@@ -38,6 +44,7 @@ export default function Signin() {
         initial={{scale:0.1,opacity:0}}
         transition={{type:"tween",duration:0.01}}
         animate={{scale:1,opacity:1}}
+        onClick={()=>handleClick()}
         >
             <span id="signin">
                 Sign in
