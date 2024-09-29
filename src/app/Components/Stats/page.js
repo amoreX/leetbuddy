@@ -9,6 +9,6 @@ export default function Stats(){
     return(
         <div
         onClick={() => signOut({ callbackUrl: "/" })}
-        >{session?.user?.name}</div>
+        >{session?.user?.name} click it to singout</div>
     )
 }
