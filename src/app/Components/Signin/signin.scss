@@ -84,13 +84,17 @@
   #signin-container {
     #title {
       font-size: 12vw;
+      // background-color: red;
     }
-    #signin-button {
-      width: 32vw;
-      font-size: 6vw;
+    #dummy-signin{
 
-      &:hover {
-        width: 14vw;
+      #signin-button {
+        width: 32vw;
+        font-size: 6vw;
+  
+        &:hover {
+          width: 14vw;
+        }
       }
     }
   }
