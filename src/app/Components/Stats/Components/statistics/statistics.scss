@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Modak&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Modak&display=swap");
+
+
+
+#statistics-container{
+    background-color: #1a1a1a;
+    width:85vw;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+
+
+    #title-stats{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 16px;
+        margin-inline: auto;
+        // background-color: red;
+        height:50px;
+        font-size: 2vw;
+        width: 85vw;
+        #leet-stats {
+            color: #ffa116;
+            font-family: "Modak", system-ui;
+          }
+          #buddy-stats {
+            color: white;
+            font-family: "Inria Sans", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+          }
+    }
+}
+
+
+@media screen and (max-width: 1100px){
+    #statistics-container{
+        width:70vw;
+
+        #title-stats{
+            // background-color: red;
+            font-size: 8vw;
+        }
+    }
+}

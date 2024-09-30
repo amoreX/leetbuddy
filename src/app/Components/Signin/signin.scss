@@ -24,67 +24,74 @@
       font-style: normal;
     }
   }
-
-  #signin-button {
-    font-family: "Inria Sans", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 1.5vw;
-    color: white;
-    background-color: #282828;
-    width: 12vw;
-    display: flex;
-    border-radius: 8px;
-    justify-content: center;
-    height:fit-content;
-    padding: 8px;
-    box-sizing: border-box;
-    align-items: center;
-    overflow: hidden;
-    transition: 0.38s ease-in-out;
-    height:6vh;
-    #signin{
+  #dummy-signin {
+    width:30vw;
+    
+    // background-color: red;
+    #signin-button {
+      margin-inline: auto;
+      font-family: "Inria Sans", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 1.5vw;
+      color: white;
+      background-color: #282828;
+      width: 12vw;
+      display: flex;
+      border-radius: 8px;
+      justify-content: center;
+      height: fit-content;
+      padding: 8px;
+      box-sizing: border-box;
+      align-items: center;
+      overflow: hidden;
+      transition: 0.38s ease-in-out;
+      height: 6vh;
+      #signin {
         transition: 0.2s ease-in;
         position: absolute;
-        
-    }
-    #ok{
+      }
+      #ok {
         transition: 0.2s ease-in-out;
         position: absolute;
         transform: translateX(100px);
-        opacity:0;
-    }
+        opacity: 0;
+      }
 
-    &:hover{
+    }
+    &:hover {
+      #signin-button{
         cursor: pointer;
-        width:3vw;
+        width: 3vw;
         border-radius: 70px;
         background-color: #ffa116;
-        #signin{
-            transform: translateX(-100px);
-            opacity: 0;
+        #signin {
+          transform: translateX(-100px);
+          opacity: 0;
         }
-        #ok{
-            transform: translateX(0px);
-            transform:rotate(-45deg);
-            opacity: 1;
+        #ok {
+          transform: translateX(0px);
+          transform: rotate(-45deg);
+          opacity: 1;
         }
+
+      }
     }
   }
 }
 
-@media screen and (max-width:1100px){
-    #signin-container{
-        #title{
-            font-size: 12vw;
-        }
-        #signin-button{
-            width:32vw;
-            font-size: 6vw;
-
-            &:hover{
-                width:14vw;
-            }
-        }
+@media screen and (max-width: 1100px) {
+  #signin-container {
+    #title {
+      font-size: 12vw;
     }
+    #signin-button {
+      width: 32vw;
+      font-size: 6vw;
+
+      &:hover {
+        width: 14vw;
+      }
+    }
+  }
 }

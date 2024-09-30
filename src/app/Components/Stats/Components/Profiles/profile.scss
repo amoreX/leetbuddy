@@ -1,0 +1,11 @@
+#profile-container{
+    height:100vh;
+    background-color: #282828;
+    width:15vw;
+}
+
+@media screen and (max-width: 1100px){
+    #profile-container{
+        width:30vw;
+    }
+}
