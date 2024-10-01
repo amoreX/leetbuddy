@@ -2,6 +2,7 @@
 import Profiles from "./Components/Profiles/profiles";
 import Statistics from "./Components/statistics/statistics";
 import Add from "./Components/Add/add";
+import Modal from "./Components/addmodal/addmodal";
 import "./stats.scss"
 import { signOut, useSession } from "next-auth/react";
 import { getServerSession } from "next-auth";
@@ -15,6 +16,7 @@ export default function Stats() {
         <Profiles />
         <Statistics />
         <Add />
+        <Modal />
       </div>
     </>
   );
