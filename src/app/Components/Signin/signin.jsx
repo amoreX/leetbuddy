@@ -2,6 +2,7 @@
 
 import "./signin.scss";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { signIn } from "next-auth/react";
 export default function Signin() {
   const arrow = (
@@ -28,18 +29,33 @@ export default function Signin() {
     </svg>
   );
   const handleClick = () => {
-    setTimeout(() => {
-      signIn("google", { callbackUrl: "/Components/Stats" });
-    }, 10);
+    // setTimeout(() => {
+    //   signIn("google", { callbackUrl: "/Components/Stats" });
+    // }, 10);
   };
+
+  const[username,setUsername]=useState(null);
+  const[pass,setPass]=useState(null);
+  const[active,setActive]=useState(null);
+
+  const handlechange=()=>{
+    setActive(true);
+    setTimeout(()=>{
+      setActive(false);
+    },100);
+  }
   return (
     <>
-      <div id="signin-container">
+      <div id="signin-container" >
         <div id="title">
           <span id="leet">Leet </span>
           <span id="buddy">Buddy</span>
         </div>
-        <div id="dummy-signin">
+        <div id="dummy-signin" style={{border:`1px solid ${active==true? "#ffa116":"grey"}`}}>
+          <div id="credentials-container">
+            <input placeholder="enter Username"  type="text" id="credentials-box"  onChange={(e)=>{setUsername(e.target.value);handlechange()}} />
+            <input placeholder="password..." type="password" id="credentials-box"  onChange={(e)=>{setPass(e.target.value);handlechange()}}/>
+          </div>
           <motion.div
             id="signin-button"
             initial={{ scale: 0.1, opacity: 0 }}
