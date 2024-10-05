@@ -124,7 +124,9 @@ export default function Statistics() {
                 {
                   tickLabelStyle: {
                     fill: "white", // Change the x-axis tick label color to blue
+                    fontSize: 22,
                   },
+
                   scaleType: "band",
                   data: [
                     "Monday",
@@ -138,7 +140,7 @@ export default function Statistics() {
                 },
               ]}
               series={[
-                { data: [4, 1, 2, 0, 3, 2, 5] },
+                { data: [4, 1, 2, 1, 3, 2, 5], color: "#28C244" },
                 // { data: [1] },
                 // { data: [2] },
                 // { data: [0] },
@@ -150,6 +152,7 @@ export default function Statistics() {
                 {
                   tickLabelStyle: {
                     fill: "white", // Change the x-axis tick label color to blue
+                    fontSize: 24,
                   },
                 },
               ]}
