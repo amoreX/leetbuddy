@@ -3,6 +3,7 @@
 import "./signin.scss";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 export default function Signin() {
   const arrow = (
@@ -28,10 +29,12 @@ export default function Signin() {
       />
     </svg>
   );
+  const navigator=useRouter();
   const handleClick = () => {
     // setTimeout(() => {
     //   signIn("google", { callbackUrl: "/Components/Stats" });
     // }, 10);
+    navigator.push("/Components/Stats");
   };
 
   const[username,setUsername]=useState(null);

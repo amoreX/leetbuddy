@@ -16,7 +16,7 @@ export default function Stats() {
         <Profiles />
         <Statistics />
         <Add />
-        <Modal />
+        {/* <Modal /> */}
       </div>
     </>
   );

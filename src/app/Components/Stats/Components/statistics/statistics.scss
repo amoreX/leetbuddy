@@ -1,48 +1,149 @@
 @import url("https://fonts.googleapis.com/css2?family=Modak&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Modak&display=swap");
 
+#statistics-container {
+  background-color: #1a1a1a;
+  width: 85vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
 
-
-#statistics-container{
-    background-color: #1a1a1a;
-    width:85vw;
-    height:100vh;
+  #title-stats {
     display: flex;
     justify-content: center;
-    // align-items: center;
-
-
-    #title-stats{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 16px;
-        margin-inline: auto;
-        // background-color: red;
-        height:50px;
-        font-size: 2vw;
-        width: 85vw;
-        #leet-stats {
-            color: #ffa116;
-            font-family: "Modak", system-ui;
-          }
-          #buddy-stats {
-            color: white;
-            font-family: "Inria Sans", sans-serif;
-            font-weight: 500;
-            font-style: normal;
-          }
+    align-items: center;
+    margin-top: 16px;
+    margin-inline: auto;
+    // background-color: red;
+    height: 50px;
+    font-size: 2vw;
+    width: 85vw;
+    #leet-stats {
+      color: #ffa116;
+      font-family: "Modak", system-ui;
     }
+    #buddy-stats {
+      color: white;
+      font-family: "Inria Sans", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+    }
+  }
+
+  #user-stats {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // background-color: grey;
+    box-sizing: border-box;
+    padding: 16px;
+    gap: 16px;
+    #questions {
+      width: 100%;
+      height: 24%;
+      // background-color: red;
+      display: flex;
+      justify-content: space-evenly;
+      #easy,
+      #medium,
+      #hard {
+        width: 24%;
+        height: 100%;
+        background-color: #282828;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: "Inria Sans", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+        #number{
+            font-size: 2.8vw;
+        }
+        #bar{
+            height:1px;
+            // min-width:20px;
+        }
+        #caption{
+            
+            font-size: 1.2vw;
+        }
+      }
+    }
+    #total-solved {
+      width: 64%;
+      height: 16%;
+      background-color: #282828;
+      border-radius: 8px;
+    }
+    #other-stats {
+      width: 100%;
+      height: 24%;
+      display: flex;
+      justify-content: space-evenly;
+      // background-color: blue;
+      #reputation,
+      #aceptance,
+      #ranking {
+        width: 24%;
+        height: 100%;
+        background-color: #282828;
+        border-radius: 8px;
+      }
+    }
+  }
 }
 
+@media screen and (max-width: 1100px) {
+  #statistics-container {
+    width: 70%;
+    // height:100%;
 
-@media screen and (max-width: 1100px){
-    #statistics-container{
-        width:70vw;
-
-        #title-stats{
-            // background-color: red;
-            font-size: 8vw;
-        }
+    #title-stats {
+      // background-color: red;
+      height: 5vh;
+      width: 70%;
+      font-size: 8vw;
+      display: flex;
+      justify-content: center;
+      // margin-inline: auto;
     }
+
+    #user-stats {
+      padding: 2px;
+      height: 80vh;
+      // justify-content: center;
+      #questions {
+        height: 16%;
+        #easy,
+        #medium,
+        #hard {
+          width: 32%;
+          #number{
+            font-size: 6vw;
+          }
+          #caption{
+            font-size: 4vw;
+          }
+        }
+      }
+      #total-solved {
+        height: 8%;
+      }
+      #other-stats {
+        height: 12%;
+        #reputation,
+        #aceptance,
+        #ranking {
+          width: 32%;
+        }
+      }
+    }
+  }
 }
