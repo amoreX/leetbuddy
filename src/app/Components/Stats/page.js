@@ -11,7 +11,7 @@ import { getServerSession } from "next-auth";
 
 export default function Stats() {
   const { data: session } = useSession();
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(400);
   const [isProfile, setProfile] = useState(false);
 
   useEffect(() => {
