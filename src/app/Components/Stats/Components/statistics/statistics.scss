@@ -63,16 +63,15 @@
         font-family: "Inria Sans", sans-serif;
         font-weight: 500;
         font-style: normal;
-        #number{
-            font-size: 2.8vw;
+        #number {
+          font-size: 2.8vw;
         }
-        #bar{
-            height:2px;
-            // min-width:20px;
+        #bar {
+          height: 2px;
+          // min-width:20px;
         }
-        #caption{
-            
-            font-size: 1.2vw;
+        #caption {
+          font-size: 1.2vw;
         }
       }
     }
@@ -96,6 +95,14 @@
         background-color: #282828;
         border-radius: 8px;
       }
+    }
+    #chart-container {
+      width: 84%;
+      height: 30%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      //  background-color: red;
     }
   }
 }
@@ -127,10 +134,10 @@
         #medium,
         #hard {
           width: 32%;
-          #number{
+          #number {
             font-size: 6vw;
           }
-          #caption{
+          #caption {
             font-size: 4vw;
           }
         }
@@ -145,6 +152,10 @@
         #ranking {
           width: 32%;
         }
+      }
+      #chart-container{
+        // background-color: red;
+        height:44vh;
       }
     }
   }
