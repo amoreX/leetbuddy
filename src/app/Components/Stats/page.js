@@ -13,6 +13,7 @@ export default function Stats() {
   const { data: session } = useSession();
   const [width, setWidth] = useState(400);
   const [isProfile, setProfile] = useState(false);
+  const [ismodal,setModal]=useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,6 +42,10 @@ export default function Stats() {
       setProfile(!isProfile);
     }
   }
+
+  const handlemodal=()=>{
+    setModal(!ismodal);
+  }
   return (
     <>
       <div id="main-container">
@@ -48,11 +53,15 @@ export default function Stats() {
           <Profiles handlewidth={handlewidth}/>
         }
         <Statistics />
-        <Add handlewidth={handlewidth} profilestatus={isProfile}/>
-        {/* <Modal /> */}
-      {(isProfile==false) &&
-      <Leaderboard handlewidth={handlewidth}/>
+        <Add handlemodal={handlemodal}/>
+        {
+          ismodal &&
+          <Modal handlemodal={handlemodal}/>
+        }
+      {(width<1100) &&
+      <Leaderboard handlewidth={handlewidth} profilestatus={isProfile}/>
       }
+      
       </div>
     </>
   );

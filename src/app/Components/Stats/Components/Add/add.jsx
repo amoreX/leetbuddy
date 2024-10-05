@@ -1,10 +1,10 @@
 import "./add.scss"
 
-export default function Add({handlewidth,profilestatus}){
+export default function Add({handlemodal}){
     return(
         <>
-            <div id="add-container" onClick={()=>handlewidth()}>
-                <span id="plus">{profilestatus==true? "<" : "+"}</span>
+            <div id="add-container" onClick={()=>handlemodal()}>
+                <span id="plus">+</span>
                 <span id="decoration"></span>
             </div>
         </>

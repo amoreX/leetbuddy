@@ -1,10 +1,10 @@
 import "./leaderboard.scss"
 
-export default function Leaderboard({handlewidth}){
+export default function Leaderboard({handlewidth,profilestatus}){
     return(
         <>
             <div id="leaderboard-container" onClick={()=>handlewidth()}>
-                0
+                {profilestatus==true? "X" : "P"}
             </div>
         </>
     )

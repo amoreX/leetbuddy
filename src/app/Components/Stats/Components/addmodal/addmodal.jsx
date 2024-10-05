@@ -2,11 +2,14 @@
 import { motion } from "framer-motion"
 import { useState,useEffect } from "react"
 import "./addmodal.scss"
-export default function Modal(){
+export default function Modal({handlemodal}){
     const [ylocation,setYlocation]=useState("0px");
     const [user,setUser]=useState(null);
     const handleclick=()=>{
-        // setYlocation("500px");
+        setYlocation("500px");
+        setTimeout(()=>{
+            handlemodal()
+        },300)
     }
     useEffect(()=>{
         console.log(user);
@@ -16,7 +19,7 @@ export default function Modal(){
             <div id="modal-container">
                 <div id="box" style={{transform:`translateY(${ylocation})`}}>
                     <input type="text" id="get-user" placeholder="username?" onChange={(e)=>setUser(e.target.value)}></input>
-                    <button id="add-user" onClick={()=>handleclick()}>ok</button>
+                    <button id="add-user" onClick={()=>handleclick()}>{user?.length > 2 ?"ok":"back"}</button>
                 </div>
             </div>
         </>
