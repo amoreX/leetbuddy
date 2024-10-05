@@ -1,4 +1,4 @@
-import "./Leaderboard.scss"
+import "./leaderboard.scss"
 
 export default function Leaderboard({handlewidth}){
     return(
