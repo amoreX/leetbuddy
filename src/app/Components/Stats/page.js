@@ -30,14 +30,16 @@ export default function Stats() {
   }, []);
 
   useEffect(() => {
-    if (width < 1100) {
+    if (width < 1100 ) {
       setProfile(false);
     } else {
       setProfile(true);
     }
   }, [width]);
   const handlewidth=()=>{
-    setProfile(!isProfile);
+    if (width<1100){
+      setProfile(!isProfile);
+    }
   }
   return (
     <>
@@ -48,7 +50,9 @@ export default function Stats() {
         <Statistics />
         <Add handlewidth={handlewidth} profilestatus={isProfile}/>
         {/* <Modal /> */}
+      {(isProfile==false) &&
       <Leaderboard handlewidth={handlewidth}/>
+      }
       </div>
     </>
   );
