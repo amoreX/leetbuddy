@@ -43,15 +43,13 @@ export default function Stats() {
     <>
       <div id="main-container">
         {isProfile && 
-          <Profiles />
+          <Profiles handlewidth={handlewidth}/>
         }
-        {/* {(isProfile==false) && 
-        } */}
         <Statistics />
-        <Add handlewidth={handlewidth}/>
+        <Add handlewidth={handlewidth} profilestatus={isProfile}/>
         {/* <Modal /> */}
-      </div>
       <Leaderboard handlewidth={handlewidth}/>
+      </div>
     </>
   );
 }
