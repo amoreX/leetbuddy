@@ -11,10 +11,10 @@ export default function Profiles({handlewidth}){
             initial={{x:-300}}
             transition={{type:"tween",duration:0.28}}
             animate={{x:0}}
-            onclick={()=>handlewidth()}
+            onClick={()=>handlewidth()}
             >
                 {/* allrught */}
-                <div onclick={()=>handlewidth()}>back</div>
+                <div onClick={()=>handlewidth()}>back</div>
             </motion.div>
         </>
     )

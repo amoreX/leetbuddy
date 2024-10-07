@@ -1,20 +1,25 @@
 "use client";
-import Profiles from "./Components/Profiles/profiles";
-import Statistics from "./Components/statistics/statistics";
-import Add from "./Components/Add/add";
-import Modal from "./Components/addmodal/addmodal";
+import Profiles from "../Components/Profiles/profiles";
+import Statistics from "../Components/statistics/statistics";
+import Add from "../Components/Add/add";
+import Modal from "../Components/addmodal/addmodal";
 import "./stats.scss";
-import Leaderboard from "./Components/Leaderboard/leaderboard";
+import { useRouter } from "next/navigation";
+import Leaderboard from "../Components/Leaderboard/leaderboard";
 import { useState, useEffect } from "react";
-import { signOut, useSession } from "next-auth/react";
-import { getServerSession } from "next-auth";
+import { useSearchParams } from "next/navigation";
 
-export default function Stats() {
-  const { data: session } = useSession();
+
+
+export default function Stats({params}) {
+  const router=useRouter();
+  const search=useSearchParams();
   const [width, setWidth] = useState(400);
   const [isProfile, setProfile] = useState(false);
   const [ismodal,setModal]=useState(false);
-
+  useEffect(()=>{
+    console.log(params.id);
+  },[params])
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);

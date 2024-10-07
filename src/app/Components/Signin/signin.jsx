@@ -29,12 +29,10 @@ export default function Signin() {
       />
     </svg>
   );
-  const navigator=useRouter();
+  const router=useRouter();
   const handleClick = () => {
-    // setTimeout(() => {
-    //   signIn("google", { callbackUrl: "/Components/Stats" });
-    // }, 10);
-    navigator.push("/Components/Stats");
+    const testuserid="0364dhj739";
+    router.push(`/Components/Stats/${testuserid}`);
   };
 
   const[username,setUsername]=useState(null);
