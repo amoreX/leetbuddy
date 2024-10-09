@@ -1,4 +1,5 @@
 "use client";
+import axios from 'axios'
 import Profiles from "../Components/Profiles/profiles";
 import Statistics from "../Components/statistics/statistics";
 import Add from "../Components/Add/add";
@@ -14,11 +15,31 @@ import { useSearchParams } from "next/navigation";
 export default function Stats({params}) {
   const router=useRouter();
   const search=useSearchParams();
+  const [currprofile,setCurrprofile]=useState(params.id);
   const [width, setWidth] = useState(400);
   const [isProfile, setProfile] = useState(false);
   const [ismodal,setModal]=useState(false);
+  const [stats,setStats]=useState(null);
+  const [profilestats,setProfilestats]=useState(null);
   useEffect(()=>{
-    console.log(params.id);
+    const gettingstats=async()=>{
+      const url=`https://alfa-leetcode-api.onrender.com/${currprofile}/solved`;
+      setStats(await axios.get(url));
+      const url2=`https://alfa-leetcode-api.onrender.com/${currprofile}`;
+      setProfilestats(await axios.get(url2));
+    }
+    gettingstats();
+  },[currprofile]);
+  useEffect(()=>{
+    // console.log(stats);
+    // console.log(stats?.data?.easySolved);
+  },[stats])
+  useEffect(()=>{
+    console.log(profilestats);
+    console.log(profilestats?.data?.ranking);
+  },[profilestats])
+  useEffect(()=>{
+    // console.log(params.id);
   },[params])
   useEffect(() => {
     const handleResize = () => {
@@ -57,7 +78,7 @@ export default function Stats({params}) {
         {isProfile && 
           <Profiles handlewidth={handlewidth}/>
         }
-        <Statistics />
+        <Statistics stats={stats} profilestats={profilestats}/>
         <Add handlemodal={handlemodal}/>
         {
           ismodal &&

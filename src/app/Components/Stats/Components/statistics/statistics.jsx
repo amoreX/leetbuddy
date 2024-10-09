@@ -4,7 +4,7 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { LineChart } from "@mui/x-charts/LineChart";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { Line } from "react-chartjs-2";
-export default function Statistics() {
+export default function Statistics({stats,profilestats}) {
   return (
     <>
       <div id="statistics-container">
@@ -15,54 +15,54 @@ export default function Statistics() {
         <div id="user-stats">
           <div id="questions">
             <div id="easy">
-              <span id="number">23</span>
+              <span id="number">{stats?.data?.easySolved}</span>
               <div
                 id="bar"
                 style={{
-                  width: `${(23 / 1726) * 500}%`,
+                  width: `${(stats?.data?.easySolved / 828) * 500}%`,
                   backgroundColor: "#28C244",
                 }}
               ></div>
-              <span id="number">1756</span>
+              <span id="number">828</span>
               <span id="caption" style={{ color: "#28C244" }}>
                 Easy
               </span>
             </div>
             <div id="medium">
-              <span id="number">50</span>
+              <span id="number">{stats?.data?.mediumSolved}</span>
               <div
                 id="bar"
                 style={{
-                  width: `${(50 / 1726) * 500}%`,
+                  width: `${(stats?.data?.mediumSolved / 1733) * 500}%`,
                   backgroundColor: "#FFA116",
                 }}
               ></div>
-              <span id="number">1726</span>
+              <span id="number">1733</span>
               <span id="caption" style={{ color: "#FFA116" }}>
                 Medium
               </span>
             </div>
             <div id="hard">
-              <span id="number">7</span>
+              <span id="number">{stats?.data?.hardSolved}</span>
               <div
                 id="bar"
                 style={{
-                  width: `${(7 / 756) * 500}%`,
+                  width: `${(stats?.data?.hardSolved / 752) * 500}%`,
                   backgroundColor: "#F63737",
                 }}
               ></div>
-              <span id="number">756</span>
+              <span id="number">752</span>
               <span id="caption" style={{ color: "#F63737" }}>
                 Hard
               </span>
             </div>
           </div>
 
-          <div id="total-solved"></div>
+          <div id="total-solved">Total Solved: {stats?.data?.solvedProblem}</div>
           <div id="other-stats">
-            <div id="reputation"></div>
-            <div id="aceptance"></div>
-            <div id="ranking"></div>
+            <div id="reputation"><span id="data">{profilestats?.data?.reputation}</span><span id="caption">Reputation</span></div>
+            <div id="aceptance"><span id="name">{profilestats?.data?.name}</span><span id="caption">Name</span></div>
+            <div id="ranking"><span id="data">{profilestats?.data?.ranking}</span><span id="caption">Ranking</span></div>
           </div>
           <div id="chart-container">
             {/* <Line 

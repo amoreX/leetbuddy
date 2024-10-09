@@ -31,8 +31,7 @@ export default function Signin() {
   );
   const router=useRouter();
   const handleClick = () => {
-    const testuserid="0364dhj739";
-    router.push(`/Components/Stats/${testuserid}`);
+    router.push(`/Components/Stats/${username}`);
   };
 
   const[username,setUsername]=useState(null);

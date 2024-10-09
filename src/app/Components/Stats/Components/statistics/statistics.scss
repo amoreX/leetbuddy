@@ -80,6 +80,14 @@
       height: 16%;
       background-color: #282828;
       border-radius: 8px;
+      color: white;
+      font-size: 4vw;
+      font-family: "Inria Sans", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     #other-stats {
       width: 100%;
@@ -94,6 +102,33 @@
         height: 100%;
         background-color: #282828;
         border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-family: "Inria Sans", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 2vw;
+        #data{
+          height:50%;
+          font-size: 3vw;
+          // background-color: #ffa116;
+          display: flex;
+          align-items: center;
+        }
+        #name{
+          height:50%;
+          font-size: 2vw;
+          // background-color: #ffa116;
+          display: flex;
+          align-items: center;
+        }
+        #caption{
+          
+          
+        }
       }
     }
     #chart-container {
@@ -144,6 +179,8 @@
       }
       #total-solved {
         height: 8%;
+        color: white;
+        font-size: 6vw;
       }
       #other-stats {
         height: 12%;
@@ -151,11 +188,18 @@
         #aceptance,
         #ranking {
           width: 32%;
+          font-size: 3vw;
+          #data{
+            font-size: 6vw;
+          }
+          #name{
+            font-size: 3vw;
+          }
         }
       }
-      #chart-container{
+      #chart-container {
         // background-color: red;
-        height:44vh;
+        height: 44vh;
         transform: scale(1.2);
       }
     }
