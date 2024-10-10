@@ -67,8 +67,23 @@ export default function Stats({params}) {
   useEffect(()=>{
     console.log(stats);
   },[stats]);
-  const handlemodal=()=>{
+  const handlemodal=(friend)=>{
     setModal(!ismodal);
+    const addFriend=async()=>{
+      if(friend){
+        const check=await axios.get(`https://alfa-leetcode-api.onrender.com/${friend}`);
+        if(check.data.username){
+          const answer=await axios.post("http://localhost:8000/user/add",{
+            userId:params.id,
+            friendId:friend
+          })
+        }
+        else{
+          alert("User does not exist");
+        }
+      }
+    }
+    addFriend();
   }
   const handleprofile=(p)=>{
     setCurrprofile(p);

@@ -8,7 +8,7 @@ export default function Modal({handlemodal}){
     const handleclick=()=>{
         setYlocation("500px");
         setTimeout(()=>{
-            handlemodal()
+            handlemodal(user);
         },300)
     }
     useEffect(()=>{
