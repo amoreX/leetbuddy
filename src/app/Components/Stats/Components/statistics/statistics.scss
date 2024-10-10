@@ -9,7 +9,13 @@
   flex-direction: column;
   // justify-content: center;
   // align-items: center;
-
+  #warning{
+    color:white;
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-inline:auto ;
+  }
   #loading-animation{
     animation:load 1s infinite linear;
   }

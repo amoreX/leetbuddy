@@ -4,7 +4,7 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { LineChart } from "@mui/x-charts/LineChart";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { Line } from "react-chartjs-2";
-export default function Statistics({stats,profilestats}) {
+export default function Statistics({stats,profilestats,friendlist}) {
   const loadsvg=(
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -31,11 +31,15 @@ export default function Statistics({stats,profilestats}) {
 	);
   return (
     <>
+    
       <div id="statistics-container">
         <div id="title-stats" onClick={() => signOut({ callbackUrl: "/" })}>
           <span id="leet-stats">Leet</span>
           <span id="buddy-stats">Buddy</span>
         </div>
+        {friendlist && 
+        <>
+        {friendlist.length==0?<div id="warning">Add your account</div>:
         <div id="user-stats">
           <div id="questions">
             <div id="easy">
@@ -185,7 +189,14 @@ export default function Statistics({stats,profilestats}) {
             />
           </div>
         </div>
+        
+        }
+    
+        </>
+        
+        }
       </div>
+    
     </>
   );
 }

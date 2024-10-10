@@ -23,12 +23,16 @@ export default function Stats({params}) {
   const [stats,setStats]=useState(null);
   const [profilestats,setProfilestats]=useState(null);
   const [calender,setCalender]=useState(null);
+  const [friendslist,setFriendslist]=useState(null);
   useEffect(()=>{
     const gettingstats=async()=>{
-      const url=`https://alfa-leetcode-api.onrender.com/${currprofile}/solved`;
-      setStats(await axios.get(url));
+      
+        const url=`https://alfa-leetcode-api.onrender.com/${currprofile}/solved`;
+        setStats(await axios.get(url));
+
       const url2=`https://alfa-leetcode-api.onrender.com/${currprofile}`;
       setProfilestats(await axios.get(url2));
+
       // const url3=`https://alfa-leetcode-api.onrender.com/${currprofile}/calendar`;
       // const leetcode = new LeetCode();
       // setCalender(await leetcode.user(currprofile));
@@ -64,9 +68,10 @@ export default function Stats({params}) {
       setProfile(!isProfile);
     }
   }
-  useEffect(()=>{
-    console.log(stats);
-  },[stats]);
+  // useEffect(()=>{
+  //   console.log(stats);
+  // },[stats]);
+
   const handlemodal=(friend)=>{
     setModal(!ismodal);
     const addFriend=async()=>{
@@ -77,6 +82,9 @@ export default function Stats({params}) {
             userId:params.id,
             friendId:friend
           })
+          if(answer.status===200){
+            alert("Friend added succesfully!");
+            window.location.reload();          }
         }
         else{
           alert("User does not exist");
@@ -85,6 +93,25 @@ export default function Stats({params}) {
     }
     addFriend();
   }
+
+useEffect(() => {
+  const obtainingfriends = async () => {
+    const friend_data = await axios.post("http://localhost:8000/user/friends", {
+      userId:params.id,
+    });
+    setFriendslist(friend_data?.data?.friends);
+  };
+    obtainingfriends();
+}, []);
+
+
+useEffect(()=>{
+  console.log(friendslist);
+  if(friendslist){
+    setCurrprofile(friendslist[0])
+  }
+},[friendslist]);
+
   const handleprofile=(p)=>{
     setCurrprofile(p);
   }
@@ -92,9 +119,9 @@ export default function Stats({params}) {
     <>
       <div id="main-container">
         {isProfile && 
-          <Profiles handlewidth={handlewidth} currprofile={currprofile} handleprofile={handleprofile}/>
+          <Profiles handlewidth={handlewidth} currprofile={currprofile} handleprofile={handleprofile} friendlist={friendslist}/>
         }
-        <Statistics stats={stats} profilestats={profilestats}/>
+        <Statistics stats={stats} profilestats={profilestats} friendlist={friendslist}/>
         <Add handlemodal={handlemodal}/>
         {
           ismodal &&

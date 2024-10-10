@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import "./profile.scss";
 
-export default function Profiles({ handlewidth, currprofile , handleprofile}) {
-  const li = ["amoreX", "aarush_dhingra"];
+export default function Profiles({ handlewidth, currprofile , handleprofile,friendlist}) {
   return (
     <>
       <motion.div
@@ -14,7 +13,9 @@ export default function Profiles({ handlewidth, currprofile , handleprofile}) {
         animate={{ x: 0 }}
         onClick={() => handlewidth()}
       >
-        {li.map((prof, index) => {
+        {friendlist && 
+        <>
+        {friendlist.map((prof, index) => {
           return (
             <div
               id="prof-each"
@@ -29,6 +30,9 @@ export default function Profiles({ handlewidth, currprofile , handleprofile}) {
             </div>
           );
         })}
+        
+        </>
+        }
       </motion.div>
     </>
   );
