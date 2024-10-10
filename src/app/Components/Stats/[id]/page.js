@@ -16,7 +16,7 @@ import { useSearchParams } from "next/navigation";
 export default function Stats({params}) {
   const router=useRouter();
   const search=useSearchParams();
-  const [currprofile,setCurrprofile]=useState(params.id);
+  const [currprofile,setCurrprofile]=useState(null);
   const [width, setWidth] = useState(400);
   const [isProfile, setProfile] = useState(false);
   const [ismodal,setModal]=useState(false);
@@ -33,19 +33,10 @@ export default function Stats({params}) {
       // const leetcode = new LeetCode();
       // setCalender(await leetcode.user(currprofile));
     }
-    gettingstats();
+    if(currprofile){
+      gettingstats();
+    }
   },[currprofile]);
-  useEffect(()=>{
-    // console.log(stats);
-    // console.log(stats?.data?.easySolved);
-  },[stats])
-  useEffect(()=>{
-    console.log(calender?.data?.submissionCalendar);
-    // console.log(profilestats?.data?.ranking);
-  },[calender])
-  useEffect(()=>{
-    // console.log(params.id);
-  },[params])
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -73,7 +64,9 @@ export default function Stats({params}) {
       setProfile(!isProfile);
     }
   }
-
+  useEffect(()=>{
+    console.log(stats);
+  },[stats]);
   const handlemodal=()=>{
     setModal(!ismodal);
   }

@@ -1,5 +1,5 @@
 "use client";
-
+import axios from 'axios';
 import "./signin.scss";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -31,12 +31,26 @@ export default function Signin() {
   );
   const router=useRouter();
   const handleClick = () => {
-    router.push(`/Components/Stats/${username}`);
+    const gettingrequest=async()=>{
+      const p = await axios.post(`http://localhost:8000/user/register`,{
+        email:username,
+        password:pass
+      });
+      if(p?.data?.authStatus=="True"){
+        alert("Success!");
+        router.push(`/Components/Stats/${p?.data?.userId}`);
+      }
+      if(p?.data?.authStatus=="False"){
+        alert("Invalid password");
+      }
+    }
+    gettingrequest();
   };
 
   const[username,setUsername]=useState(null);
   const[pass,setPass]=useState(null);
   const[active,setActive]=useState(null);
+  const[message,setMessage]=useState(null);
 
   const handlechange=()=>{
     setActive(true);
