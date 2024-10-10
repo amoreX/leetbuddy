@@ -10,6 +10,17 @@
   // justify-content: center;
   // align-items: center;
 
+  #loading-animation{
+    animation:load 1s infinite linear;
+  }
+  @keyframes load{
+    0%{
+        rotate:0deg;
+    }
+    100%{
+        rotate:360deg;
+    }
+}
   #title-stats {
     display: flex;
     justify-content: center;

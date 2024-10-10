@@ -5,6 +5,30 @@ import { LineChart } from "@mui/x-charts/LineChart";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { Line } from "react-chartjs-2";
 export default function Statistics({stats,profilestats}) {
+  const loadsvg=(
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="20px"
+			height="20px"
+			viewBox="0 0 24 24"
+			fill="none"
+      id="loading-animation"
+		>
+			<g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+			<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+
+			<g id="SVGRepo_iconCarrier">
+				{" "}
+				<path
+					d="M20.0001 12C20.0001 13.3811 19.6425 14.7386 18.9623 15.9405C18.282 17.1424 17.3022 18.1477 16.1182 18.8587C14.9341 19.5696 13.5862 19.9619 12.2056 19.9974C10.825 20.0328 9.45873 19.7103 8.23975 19.0612"
+					stroke="#ffffff"
+					stroke-width="3.55556"
+					stroke-linecap="round"
+				/>{" "}
+			</g>
+		</svg>
+	);
   return (
     <>
       <div id="statistics-container">
@@ -15,7 +39,7 @@ export default function Statistics({stats,profilestats}) {
         <div id="user-stats">
           <div id="questions">
             <div id="easy">
-              <span id="number">{stats?.data?.easySolved}</span>
+              <span id="number">{!profilestats && loadsvg}{stats?.data?.easySolved}</span>
               <div
                 id="bar"
                 style={{
@@ -29,7 +53,7 @@ export default function Statistics({stats,profilestats}) {
               </span>
             </div>
             <div id="medium">
-              <span id="number">{stats?.data?.mediumSolved}</span>
+              <span id="number">{!profilestats && loadsvg}{stats?.data?.mediumSolved}</span>
               <div
                 id="bar"
                 style={{
@@ -43,7 +67,7 @@ export default function Statistics({stats,profilestats}) {
               </span>
             </div>
             <div id="hard">
-              <span id="number">{stats?.data?.hardSolved}</span>
+              <span id="number">{!profilestats && loadsvg}{stats?.data?.hardSolved}</span>
               <div
                 id="bar"
                 style={{
@@ -58,11 +82,11 @@ export default function Statistics({stats,profilestats}) {
             </div>
           </div>
 
-          <div id="total-solved">Total Solved: {stats?.data?.solvedProblem}</div>
+          <div id="total-solved">Total Solved: {!profilestats && loadsvg}{stats?.data?.solvedProblem}</div>
           <div id="other-stats">
-            <div id="reputation"><span id="data">{profilestats?.data?.reputation}</span><span id="caption">Reputation</span></div>
-            <div id="aceptance"><span id="name">{profilestats?.data?.name}</span><span id="caption">Name</span></div>
-            <div id="ranking"><span id="data">{profilestats?.data?.ranking}</span><span id="caption">Ranking</span></div>
+            <div id="reputation"><span id="data">{!profilestats && loadsvg}{profilestats?.data?.reputation}</span><span id="caption">Reputation</span></div>
+            <div id="aceptance"><span id="name">{!profilestats && loadsvg}{profilestats?.data?.name}</span><span id="caption">Name</span></div>
+            <div id="ranking"><span id="data">{!profilestats && loadsvg}{profilestats?.data?.ranking}</span><span id="caption">Ranking</span></div>
           </div>
           <div id="chart-container">
             {/* <Line 
