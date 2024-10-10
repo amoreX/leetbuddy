@@ -1,5 +1,6 @@
 "use client";
 import axios from 'axios'
+import { LeetCode } from "leetcode-query";
 import Profiles from "../Components/Profiles/profiles";
 import Statistics from "../Components/statistics/statistics";
 import Add from "../Components/Add/add";
@@ -21,12 +22,16 @@ export default function Stats({params}) {
   const [ismodal,setModal]=useState(false);
   const [stats,setStats]=useState(null);
   const [profilestats,setProfilestats]=useState(null);
+  const [calender,setCalender]=useState(null);
   useEffect(()=>{
     const gettingstats=async()=>{
       const url=`https://alfa-leetcode-api.onrender.com/${currprofile}/solved`;
       setStats(await axios.get(url));
       const url2=`https://alfa-leetcode-api.onrender.com/${currprofile}`;
       setProfilestats(await axios.get(url2));
+      // const url3=`https://alfa-leetcode-api.onrender.com/${currprofile}/calendar`;
+      // const leetcode = new LeetCode();
+      // setCalender(await leetcode.user(currprofile));
     }
     gettingstats();
   },[currprofile]);
@@ -35,9 +40,9 @@ export default function Stats({params}) {
     // console.log(stats?.data?.easySolved);
   },[stats])
   useEffect(()=>{
-    console.log(profilestats);
-    console.log(profilestats?.data?.ranking);
-  },[profilestats])
+    console.log(calender?.data?.submissionCalendar);
+    // console.log(profilestats?.data?.ranking);
+  },[calender])
   useEffect(()=>{
     // console.log(params.id);
   },[params])
@@ -72,11 +77,14 @@ export default function Stats({params}) {
   const handlemodal=()=>{
     setModal(!ismodal);
   }
+  const handleprofile=(p)=>{
+    setCurrprofile(p);
+  }
   return (
     <>
       <div id="main-container">
         {isProfile && 
-          <Profiles handlewidth={handlewidth}/>
+          <Profiles handlewidth={handlewidth} currprofile={currprofile} handleprofile={handleprofile}/>
         }
         <Statistics stats={stats} profilestats={profilestats}/>
         <Add handlemodal={handlemodal}/>

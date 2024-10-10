@@ -1,13 +1,38 @@
-#profile-container{
-    height:100vh;
-    background-color: #282828;
-    width:15vw;
+@import url("https://fonts.googleapis.com/css2?family=Modak&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Modak&display=swap");
+
+#profile-container {
+  height: 100vh;
+  background-color: #282828;
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:8px;
+  #prof-each {
+    width: 95%;
+    border-radius: 4px;
+    font-family: "Inria Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    background-color: #a0a0a0;
+    display: flex;
+    box-sizing: border-box;
+    cursor:pointer;
+    padding: 4px;
+    justify-content: center;
+  }
 }
 
-@media screen and (max-width: 1100px){
-    #profile-container{
-        position:absolute;
-        width:48%;
-        z-index:13;
+@media screen and (max-width: 1100px) {
+  #profile-container {
+    position: absolute;
+    width: 48%;
+    z-index: 13;
+
+    #prof-each {
+      width: 100%;
+      background-color: red;
     }
+  }
 }
