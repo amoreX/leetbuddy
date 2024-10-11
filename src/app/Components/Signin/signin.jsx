@@ -32,7 +32,7 @@ export default function Signin() {
   const router=useRouter();
   const handleClick = () => {
     const gettingrequest=async()=>{
-      const p = await axios.post(`http://localhost:8000/user/register`,{
+      const p = await axios.post(`/api/register`,{
         email:username,
         password:pass
       });

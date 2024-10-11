@@ -78,7 +78,7 @@ export default function Stats({params}) {
       if(friend){
         const check=await axios.get(`https://alfa-leetcode-api.onrender.com/${friend}`);
         if(check.data.username){
-          const answer=await axios.post("http://localhost:8000/user/add",{
+          const answer=await axios.post("/api/addFriends",{
             userId:params.id,
             friendId:friend
           })
@@ -96,7 +96,7 @@ export default function Stats({params}) {
 
 useEffect(() => {
   const obtainingfriends = async () => {
-    const friend_data = await axios.post("http://localhost:8000/user/friends", {
+    const friend_data = await axios.post("/api/getFriends/", {
       userId:params.id,
     });
     setFriendslist(friend_data?.data?.friends);
