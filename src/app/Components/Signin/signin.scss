@@ -60,6 +60,14 @@
         padding-inline: 8px;
       }
     }
+    #user-message{
+      // color:white;
+      font-family: "Inria Sans", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      display: flex;
+      margin-inline: auto;
+    }
     #signin-button {
       margin-inline: auto;
       font-family: "Inria Sans", sans-serif;
@@ -79,6 +87,17 @@
       overflow: hidden;
       transition: 0.38s ease-in-out;
       height: 6vh;
+      #loading{
+        animation:load 1s infinite linear;
+      }
+      @keyframes load{
+        0%{
+            rotate:0deg;
+        }
+        100%{
+            rotate:360deg;
+        }
+    }
       #signin {
         transition: 0.2s ease-in;
         position: absolute;

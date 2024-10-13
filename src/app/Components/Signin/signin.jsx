@@ -1,5 +1,5 @@
 "use client";
-import axios from 'axios';
+import axios from "axios";
 import "./signin.scss";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -29,47 +29,101 @@ export default function Signin() {
       />
     </svg>
   );
-  const router=useRouter();
+  const loadsvg = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20px"
+      height="20px"
+      viewBox="0 0 24 24"
+      fill="none"
+      id="loading-animation"
+    >
+      <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+
+      <g
+        id="SVGRepo_tracerCarrier"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+
+      <g id="SVGRepo_iconCarrier">
+        {" "}
+        <path
+          d="M20.0001 12C20.0001 13.3811 19.6425 14.7386 18.9623 15.9405C18.282 17.1424 17.3022 18.1477 16.1182 18.8587C14.9341 19.5696 13.5862 19.9619 12.2056 19.9974C10.825 20.0328 9.45873 19.7103 8.23975 19.0612"
+          stroke="#ffffff"
+          strokeWidth="3.55556"
+          strokeLinecap="round"
+        />{" "}
+      </g>
+    </svg>
+  );
+  const router = useRouter();
   const handleClick = () => {
-    const gettingrequest=async()=>{
-      const p = await axios.post(`/api/register`,{
-        email:username,
-        password:pass
+    const gettingrequest = async () => {
+      const p = await axios.post(`/api/register`, {
+        email: username,
+        password: pass,
       });
-      if(p?.data?.authStatus=="True"){
-        alert("Success!");
+      if (p?.data?.authStatus == "True") {
+        // alert("Success!");
+        // setLoading(false);
+        setMessage("Redirecting...")
         router.push(`/Components/Stats/${p?.data?.userId}`);
       }
-      if(p?.data?.authStatus=="False"){
-        alert("Invalid password");
+      if (p?.data?.authStatus == "False") {
+        setLoading(false);
+        setMessage("Wrong password")
+        // alert("Invalid password");
       }
-    }
+    };
     gettingrequest();
+    setLoading(true);
   };
 
-  const[username,setUsername]=useState(null);
-  const[pass,setPass]=useState(null);
-  const[active,setActive]=useState(null);
-  const[message,setMessage]=useState(null);
+  const [username, setUsername] = useState(null);
+  const [pass, setPass] = useState(null);
+  const [active, setActive] = useState(null);
+  const [message, setMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const handlechange=()=>{
+  const handlechange = () => {
     setActive(true);
-    setTimeout(()=>{
+    setTimeout(() => {
       setActive(false);
-    },100);
-  }
+    }, 100);
+  };
   return (
     <>
-      <div id="signin-container" >
+      <div id="signin-container">
         <div id="title">
           <span id="leet">Leet </span>
           <span id="buddy">Buddy</span>
         </div>
-        <div id="dummy-signin" style={{border:`1px solid ${active==true? "#ffa116":"grey"}`}}>
+        <div
+          id="dummy-signin"
+          style={{ border: `1px solid ${active == true ? "#ffa116" : "grey"}` }}
+        >
           <div id="credentials-container">
-            <input placeholder="enter Username"  type="text" id="credentials-box"  onChange={(e)=>{setUsername(e.target.value);handlechange()}} />
-            <input placeholder="password..." type="password" id="credentials-box"  onChange={(e)=>{setPass(e.target.value);handlechange()}}/>
+            <input
+              placeholder="enter Username"
+              type="text"
+              id="credentials-box"
+              onChange={(e) => {
+                setUsername(e.target.value);
+                handlechange();
+              }}
+            />
+            <input
+              placeholder="password..."
+              type="password"
+              id="credentials-box"
+              onChange={(e) => {
+                setPass(e.target.value);
+                handlechange();
+              }}
+            />
           </div>
+          <div id="user-message" style={{color:message=="Wrong password"?"red":"green"}}>{message}</div>
           <motion.div
             id="signin-button"
             initial={{ scale: 0.1, opacity: 0 }}
@@ -77,8 +131,14 @@ export default function Signin() {
             animate={{ scale: 1, opacity: 1 }}
             onClick={() => handleClick()}
           >
-            <span id="signin">Sign in</span>
-            <span id="ok">{arrow}</span>
+            {loading == true ? (
+              <div id="loading">{loadsvg}</div>
+            ) : (
+              <>
+                <span id="signin">Sign in</span>
+                <span id="ok">{arrow}</span>
+              </>
+            )}
           </motion.div>
         </div>
       </div>
