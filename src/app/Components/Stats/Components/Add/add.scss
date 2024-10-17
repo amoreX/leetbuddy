@@ -18,6 +18,18 @@
     // transition: background-color 2s delay 1s ;
     #plus{
         z-index: 10;
+        #loading-add{
+            animation:load 1s infinite linear;
+        }
+        @keyframes load {
+            0%{
+                rotate:0deg;
+            }
+            100%{
+                rotate:360deg;
+            }
+        }
+        
     }
     #decoration{
         position: absolute;

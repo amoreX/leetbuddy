@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import "./profile.scss";
 
 export default function Profiles({ handlewidth, currprofile , handleprofile,friendlist}) {
+  
   return (
     <>
       <motion.div
