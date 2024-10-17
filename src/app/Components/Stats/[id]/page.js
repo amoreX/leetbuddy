@@ -70,6 +70,9 @@ export default function Stats({ params }) {
   },[calender]);
 
   const handlemodal = (friend) => {
+    if(ismodal==true){
+      setAdding(false);
+    }
     setModal(!ismodal);
     const addFriend = async () => {
       setAdding(true);
