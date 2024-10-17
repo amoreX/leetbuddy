@@ -31,9 +31,8 @@ export default function Stats({ params }) {
       const url2 = `https://alfa-leetcode-api.onrender.com/${currprofile}`;
       setProfilestats(await axios.get(url2));
 
-      // const url3=`https://alfa-leetcode-api.onrender.com/${currprofile}/calendar`;
-      // const leetcode = new LeetCode();
-      // setCalender(await leetcode.user(currprofile));
+      const url3=`https://alfa-leetcode-api.onrender.com/${currprofile}/calendar`;
+      setCalender(await axios.get(url3));
     };
     if (currprofile) {
       gettingstats();
@@ -66,9 +65,9 @@ export default function Stats({ params }) {
       setProfile(!isProfile);
     }
   };
-  // useEffect(()=>{
-  //   console.log(stats);
-  // },[stats]);
+  useEffect(()=>{
+    // console.log(calender?.data?.submissionCalendar);
+  },[calender]);
 
   const handlemodal = (friend) => {
     setModal(!ismodal);
@@ -108,7 +107,7 @@ export default function Stats({ params }) {
   }, []);
 
   useEffect(() => {
-    console.log(friendslist);
+    // console.log(friendslist);
     if (friendslist) {
       setCurrprofile(friendslist[0]);
     }
@@ -132,6 +131,7 @@ export default function Stats({ params }) {
           stats={stats}
           profilestats={profilestats}
           friendlist={friendslist}
+          calendar={calender}
         />
         <Add handlemodal={handlemodal} adding={isAdding} />
         {ismodal && <Modal handlemodal={handlemodal} />}
