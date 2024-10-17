@@ -71,8 +71,8 @@ export default function Stats({ params }) {
 
   const handlemodal = (friend) => {
     setModal(!ismodal);
+    setAdding(true);
     const addFriend = async () => {
-      setAdding(true);
       if (friend) {
         const check = await axios.get(
           `https://alfa-leetcode-api.onrender.com/${friend}`
