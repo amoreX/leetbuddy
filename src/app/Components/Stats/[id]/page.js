@@ -23,6 +23,7 @@ export default function Stats({ params }) {
   const [calender, setCalender] = useState(null);
   const [friendslist, setFriendslist] = useState(null);
   const [isAdding, setAdding] = useState(false);
+  //damn
   useEffect(() => {
     const gettingstats = async () => {
       const url = `https://alfa-leetcode-api.onrender.com/${currprofile}/solved`;
