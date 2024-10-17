@@ -70,9 +70,6 @@ export default function Stats({ params }) {
   },[calender]);
 
   const handlemodal = (friend) => {
-    if(ismodal==true){
-      setAdding(false);
-    }
     setModal(!ismodal);
     const addFriend = async () => {
       setAdding(true);
@@ -91,10 +88,10 @@ export default function Stats({ params }) {
             window.location.reload();
           }
         } else {
-          setAdding(false);
           alert("User does not exist");
         }
       }
+      setAdding(false);
     };
     addFriend();
   };
