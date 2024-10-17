@@ -42,8 +42,8 @@ export default function Statistics({
 
   const [cal, setCal] = useState(null);
   const [actualcal, setActualcal] = useState(null);
-  const [sufficient,setSufficient]=useState(true);
-  
+  const [sufficient, setSufficient] = useState(true);
+  const [monthname, setMonthname] = useState(null);
   useEffect(() => {
     setCal(calendar?.data?.submissionCalendar);
     // console.log(calendar?.data?.submissionCalendar);
@@ -61,28 +61,45 @@ export default function Statistics({
       );
 
       const sortedArray = Object.entries(sortedDictionary);
-      if (sortedArray.length<7){
+      if (sortedArray.length < 7) {
         setSufficient(false);
-      }
-      else{
+      } else {
         setSufficient(true);
       }
       // Get the last 10 pairs
       const last10pairs = sortedArray.slice(-7);
-
+      let currmonth = 0;
       for (let i = 0; i < last10pairs.length; i++) {
         let date = new Date(Number(last10pairs[i][0]) * 1000);
         let day = date.getDate();
+        let month = date.getMonth();
+        if (month > currmonth) {
+          currmonth = month;
+        }
         last10pairs[i][0] = day;
       }
 
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      setMonthname(monthNames[currmonth]);
       setActualcal(last10pairs);
     }
   }, [cal]);
 
   useEffect(() => {
     console.log(actualcal);
-
   }, [actualcal]);
   return (
     <>
@@ -181,62 +198,75 @@ export default function Statistics({
                 <div id="chart-container">
                   {actualcal != null ? (
                     <>
-                    {sufficient ==true?
-                    <BarChart
-                      xAxis={[
-                        {
-                          tickLabelStyle: {
-                            fill: "white", // Change the x-axis tick label color to blue
-                            fontSize: 22,
-                          },
+                      {sufficient == true ? (
+                        <BarChart
+                          xAxis={[
+                            {
+                              tickLabelStyle: {
+                                fill: "white", // Change the x-axis tick label color to blue
+                                fontSize: 22,
+                              },
 
-                          scaleType: "band",
-                          data: [
-                            actualcal[0][0],
-                            actualcal[1][0],
-                            actualcal[2][0],
-                            actualcal[3][0],
-                            actualcal[4][0],
-                            actualcal[5][0],
-                            actualcal[6][0],
-                            // actualcal[7][0],
-                            // actualcal[8][0],
-                            // actualcal[9][0],
-                          ],
-                        },
-                      ]}
-                      series={[
-                        {
-                          data: [
-                            actualcal[0][1],
-                            actualcal[1][1],
-                            actualcal[2][1],
-                            actualcal[3][1],
-                            actualcal[4][1],
-                            actualcal[5][1],
-                            actualcal[6][1],
-                            // actualcal[7][1],
-                            // actualcal[8][1],
-                            // actualcal[9][1],
-                          ],
-                          color: "#28C244",
-                        },
-                      ]}
-                      yAxis={[
-                        {
-                          tickLabelStyle: {
-                            fill: "white", // Change the x-axis tick label color to blue
-                            fontSize: 24,
-                          },
-                        },
-                      ]}
-                      width={1000}
-                      height={300}
-                    />
-                    :
-                    <div style={{color:"white"}}>Not sufficient Submissions</div>
-                    
-                  }
+                              scaleType: "band",
+                              data: [
+                                actualcal[0][0],
+                                actualcal[1][0],
+                                actualcal[2][0],
+                                actualcal[3][0],
+                                actualcal[4][0],
+                                actualcal[5][0],
+                                actualcal[6][0],
+                                // actualcal[7][0],
+                                // actualcal[8][0],
+                                // actualcal[9][0],
+                              ],
+                            },
+                          ]}
+                          series={[
+                            {
+                              data: [
+                                actualcal[0][1],
+                                actualcal[1][1],
+                                actualcal[2][1],
+                                actualcal[3][1],
+                                actualcal[4][1],
+                                actualcal[5][1],
+                                actualcal[6][1],
+                                // actualcal[7][1],
+                                // actualcal[8][1],
+                                // actualcal[9][1],
+                              ],
+                              label: monthname,
+                              color: "#28C244",
+                            },
+                          ]}
+                          yAxis={[
+                            {
+                              tickLabelStyle: {
+                                fill: "white", // Change the x-axis tick label color to blue
+                                fontSize: 24,
+                              },
+                            },
+                          ]}
+                          slotProps={{
+                            legend: {
+                              direction: "row",
+                              labelStyle: { fill: "white", color: "white" },
+                              position: {
+                                vertical: "top",
+                                horizontal: "middle",
+                              },
+                              padding: 16,
+                            },
+                          }}
+                          width={1000}
+                          height={300}
+                        />
+                      ) : (
+                        <div style={{ color: "white" }}>
+                          Not sufficient Submissions
+                        </div>
+                      )}
                     </>
                   ) : (
                     <div id="chart-load">{loadsvg}</div>
