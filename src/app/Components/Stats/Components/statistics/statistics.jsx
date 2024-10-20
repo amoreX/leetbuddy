@@ -164,8 +164,8 @@ export default function Statistics({
                       <div
                         id="bar"
                         style={{
-                          width: `${(stats?.data?.easySolved / 828) * 500}%`,
-                          backgroundColor: "#28C244",
+                          width: `${(stats?.data?.mediumSolved / 1733) * 500}%`,
+                          backgroundColor: "#FFA116",
                         }}
                       ></div>
                     )}
@@ -192,8 +192,8 @@ export default function Statistics({
                       <div
                         id="bar"
                         style={{
-                          width: `${(stats?.data?.easySolved / 828) * 500}%`,
-                          backgroundColor: "#28C244",
+                          width: `${(stats?.data?.hardSolved / 752) * 500}%`,
+                          backgroundColor: "#F63737",
                         }}
                       ></div>
                     )}
