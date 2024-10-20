@@ -1,3 +1,5 @@
+"use client";
+
 import "./statistics.scss";
 import { signOut } from "next-auth/react";
 import { Chart as ChartJS } from "chart.js/auto";
@@ -5,6 +7,7 @@ import { LineChart } from "@mui/x-charts/LineChart";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
+import { motion } from "framer-motion";
 export default function Statistics({
   stats,
   profilestats,
@@ -115,85 +118,138 @@ export default function Statistics({
             ) : (
               <div id="user-stats">
                 <div id="questions">
-                  <div id="easy">
+                  <motion.div
+                    id="easy"
+                    initial={{ y: -50, opacity: 0 }}
+                    transition={{
+                      type: "tween",
+                      delay: 0.2,
+                      ease: "easeInOut",
+                    }}
+                    animate={{ y: 0, opacity: 1 }}
+                  >
                     <span id="number">
                       {!profilestats && loadsvg}
                       {stats?.data?.easySolved}
                     </span>
-                    <div
-                      id="bar"
-                      style={{
-                        width: `${(stats?.data?.easySolved / 828) * 500}%`,
-                        backgroundColor: "#28C244",
-                      }}
-                    ></div>
+                    {profilestats && (
+                      <div
+                        id="bar"
+                        style={{
+                          width: `${(stats?.data?.easySolved / 828) * 500}%`,
+                          backgroundColor: "#28C244",
+                        }}
+                      ></div>
+                    )}
                     <span id="number">828</span>
                     <span id="caption" style={{ color: "#28C244" }}>
                       Easy
                     </span>
-                  </div>
-                  <div id="medium">
+                  </motion.div>
+                  <motion.div
+                    id="medium"
+                    initial={{ y: -50, opacity: 0 }}
+                    transition={{
+                      type: "tween",
+                      ease: "easeInOut",
+                      delay: 0.4,
+                    }}
+                    animate={{ y: 0, opacity: 1 }}
+                  >
                     <span id="number">
                       {!profilestats && loadsvg}
                       {stats?.data?.mediumSolved}
                     </span>
-                    <div
-                      id="bar"
-                      style={{
-                        width: `${(stats?.data?.mediumSolved / 1733) * 500}%`,
-                        backgroundColor: "#FFA116",
-                      }}
-                    ></div>
+                    {profilestats && (
+                      <div
+                        id="bar"
+                        style={{
+                          width: `${(stats?.data?.easySolved / 828) * 500}%`,
+                          backgroundColor: "#28C244",
+                        }}
+                      ></div>
+                    )}
                     <span id="number">1733</span>
                     <span id="caption" style={{ color: "#FFA116" }}>
                       Medium
                     </span>
-                  </div>
-                  <div id="hard">
+                  </motion.div>
+                  <motion.div
+                    id="hard"
+                    initial={{ y: -50, opacity: 0 }}
+                    transition={{
+                      type: "tween",
+                      ease: "easeInOut",
+                      delay: 0.6,
+                    }}
+                    animate={{ y: 0, opacity: 1 }}
+                  >
                     <span id="number">
                       {!profilestats && loadsvg}
                       {stats?.data?.hardSolved}
                     </span>
-                    <div
-                      id="bar"
-                      style={{
-                        width: `${(stats?.data?.hardSolved / 752) * 500}%`,
-                        backgroundColor: "#F63737",
-                      }}
-                    ></div>
+                    {profilestats && (
+                      <div
+                        id="bar"
+                        style={{
+                          width: `${(stats?.data?.easySolved / 828) * 500}%`,
+                          backgroundColor: "#28C244",
+                        }}
+                      ></div>
+                    )}
                     <span id="number">752</span>
                     <span id="caption" style={{ color: "#F63737" }}>
                       Hard
                     </span>
-                  </div>
+                  </motion.div>
                 </div>
 
-                <div id="total-solved">
+                <motion.div
+                  id="total-solved"
+                  initial={{ scale: 0.1, opacity: 0 }}
+                  transition={{ type: "tween", ease: "easeInOut", delay: 0.8 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                >
                   Total Solved: {!profilestats && loadsvg}
                   {stats?.data?.solvedProblem}
-                </div>
+                </motion.div>
                 <div id="other-stats">
-                  <div id="reputation">
+                  <motion.div
+                    id="reputation"
+                    initial={{ x: -50, opacity: 0 }}
+                    transition={{ type: "tween", ease: "easeInOut", delay: 1 }}
+                    animate={{ x: 0, opacity: 1 }}
+                  >
                     <span id="data">
                       {!profilestats && loadsvg}
                       {profilestats?.data?.reputation}
                     </span>
                     <span id="caption">Reputation</span>
-                  </div>
-                  <div id="aceptance">
+                  </motion.div>
+                  <motion.div
+                    id="aceptance"
+                    initial={{ scale: 0.1, opacity: 0 }}
+                    transition={{ type: "tween", ease: "easeInOut", delay: 1 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                  >
                     <span id="name">
                       {!profilestats && loadsvg}
                       {profilestats?.data?.name}
                     </span>
                     <span id="caption">Name</span>
-                  </div>
-                  <div id="ranking">
+                  </motion.div>
+                  <motion.div
+                    id="ranking"
+                    initial={{ x: 50, opacity: 0 }}
+                    transition={{ type: "tween", ease: "easeInOut", delay: 1 }}
+                    animate={{ x: 0, opacity: 1 }}
+                  >
                     <span id="data">
                       {!profilestats && loadsvg}
                       {profilestats?.data?.ranking}
                     </span>
                     <span id="caption">Ranking</span>
-                  </div>
+                  </motion.div>
                 </div>
                 <div id="chart-container">
                   {actualcal != null ? (

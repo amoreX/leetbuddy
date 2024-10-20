@@ -66,9 +66,6 @@ export default function Stats({ params }) {
       setProfile(!isProfile);
     }
   };
-  useEffect(()=>{
-    // console.log(calender?.data?.submissionCalendar);
-  },[calender]);
 
   const handlemodal = (friend) => {
     setModal(!ismodal);
@@ -115,6 +112,9 @@ export default function Stats({ params }) {
   }, [friendslist]);
 
   const handleprofile = (p) => {
+    setStats(null);
+    setProfilestats(null);
+    setCalender(null);
     setCurrprofile(p);
   };
   return (
