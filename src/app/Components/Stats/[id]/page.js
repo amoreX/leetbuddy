@@ -32,7 +32,7 @@ export default function Stats({ params }) {
       const url2 = `https://alfa-leetcode-api.onrender.com/${currprofile}`;
       setProfilestats(await axios.get(url2));
 
-      const url3=`https://alfa-leetcode-api.onrender.com/${currprofile}/calendar`;
+      const url3 = `https://alfa-leetcode-api.onrender.com/${currprofile}/calendar`;
       setCalender(await axios.get(url3));
     };
     if (currprofile) {
@@ -72,21 +72,26 @@ export default function Stats({ params }) {
     setAdding(true);
     const addFriend = async () => {
       if (friend) {
-        const check = await axios.get(
-          `https://alfa-leetcode-api.onrender.com/${friend}`
-        );
-        if (check.data.username) {
-          const answer = await axios.post("/api/addFriends", {
-            userId: params.id,
-            friendId: friend,
-          });
-          if (answer.status === 200) {
-            alert("Friend added succesfully!");
-            setAdding(false);
-            window.location.reload();
+        if (!friendslist?.includes(friend)) {
+          const check = await axios.get(
+            `https://alfa-leetcode-api.onrender.com/${friend}`
+          );
+          if (check.data.username) {
+            const answer = await axios.post("/api/addFriends", {
+              userId: params.id,
+              friendId: friend,
+            });
+            if (answer.status === 200) {
+              alert("Friend added succesfully!");
+              setAdding(false);
+              window.location.reload();
+            }
+          } else {
+            alert("User does not exist");
           }
         } else {
-          alert("User does not exist");
+          alert("Friend added succesfully!");
+          setAdding(false);
         }
       }
       setAdding(false);
