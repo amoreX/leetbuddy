@@ -35,7 +35,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    
+
     #credentials-container {
       height: 15vh;
       font-family: "Inria Sans", sans-serif;
@@ -51,7 +51,7 @@
         background-color: #282828;
         height: 32%;
         width: 88%;
-        cursor:default;
+        cursor: default;
         border-radius: 8px;
         font-family: "Inria sans";
         color: white;
@@ -60,7 +60,7 @@
         padding-inline: 8px;
       }
     }
-    #user-message{
+    #user-message {
       // color:white;
       font-family: "Inria Sans", sans-serif;
       font-weight: 500;
@@ -87,17 +87,17 @@
       overflow: hidden;
       transition: 0.38s ease-in-out;
       height: 6vh;
-      #loading{
-        animation:load 1s infinite linear;
+      #loading {
+        animation: load 1s infinite linear;
       }
-      @keyframes load{
-        0%{
-            rotate:0deg;
+      @keyframes load {
+        0% {
+          rotate: 0deg;
         }
-        100%{
-            rotate:360deg;
+        100% {
+          rotate: 360deg;
         }
-    }
+      }
       #signin {
         transition: 0.2s ease-in;
         position: absolute;
@@ -126,23 +126,57 @@
         }
       }
     }
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  #signin-container {
-    #title {
-      font-size: 12vw;
-      // background-color: red;
+    #signin-loading {
+      margin-inline: auto;
+      font-family: "Inria Sans", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 1.2vw;
+      color: white;
+      background-color: #282828;
+      width: 8vw;
+      display: flex;
+      border-radius: 4px;
+      justify-content: center;
+      height: fit-content;
+      padding: 8px;
+      box-sizing: border-box;
+      align-items: center;
+      overflow: hidden;
+      transition: 0.38s ease-in-out;
+      height: 6vh;
+      #loading {
+        animation: load 1s infinite linear;
+      }
+      @keyframes load {
+        0% {
+          rotate: 0deg;
+        }
+        100% {
+          rotate: 360deg;
+        }
+      }
     }
-    #dummy-signin {
-      width:64vw;
-      #signin-button {
-        width: 32vw;
-        font-size: 4vw;
+  }
 
-        &:hover {
-          width: 14vw;
+  @media screen and (max-width: 1100px) {
+    #signin-container {
+      #title {
+        font-size: 12vw;
+        // background-color: red;
+      }
+      #dummy-signin {
+        width: 64vw;
+        #signin-button {
+          width: 32vw;
+          font-size: 4vw;
+
+          &:hover {
+            width: 14vw;
+          }
+        }
+        #signin-loading{
+          width: 32vw;
         }
       }
     }

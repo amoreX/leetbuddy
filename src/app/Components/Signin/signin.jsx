@@ -57,7 +57,7 @@ export default function Signin() {
       </g>
     </svg>
   );
-  const leetbuddypfp=(
+  const leetbuddypfp = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={300}
@@ -74,7 +74,7 @@ export default function Signin() {
         fill="white"
       />
     </svg>
-    )
+  );
   const router = useRouter();
   const handleClick = () => {
     const gettingrequest = async () => {
@@ -85,12 +85,12 @@ export default function Signin() {
       if (p?.data?.authStatus == "True") {
         // alert("Success!");
         // setLoading(false);
-        setMessage("Redirecting...")
+        setMessage("Redirecting...");
         router.push(`/Components/Stats/${p?.data?.userId}`);
       }
       if (p?.data?.authStatus == "False") {
         setLoading(false);
-        setMessage("Wrong password")
+        setMessage("Wrong password");
         // alert("Invalid password");
       }
     };
@@ -114,7 +114,7 @@ export default function Signin() {
     <>
       <div id="signin-container">
         <div id="title">
-        {leetbuddypfp}
+          {leetbuddypfp}
           {/* <span id="leet">Leet </span>
           <span id="buddy">Buddy</span> */}
         </div>
@@ -142,23 +142,28 @@ export default function Signin() {
               }}
             />
           </div>
-          <div id="user-message" style={{color:message=="Wrong password"?"red":"green"}}>{message}</div>
-          <motion.div
-            id="signin-button"
-            initial={{ scale: 0.1, opacity: 0 }}
-            transition={{ type: "tween", duration: 0.01 }}
-            animate={{ scale: 1, opacity: 1 }}
-            onClick={() => handleClick()}
+          <div
+            id="user-message"
+            style={{ color: message == "Wrong password" ? "red" : "green" }}
           >
-            {loading == true ? (
+            {message}
+          </div>
+          {loading == false ? (
+            <motion.div
+              id="signin-button"
+              initial={{ scale: 0.1, opacity: 0 }}
+              transition={{ type: "tween", duration: 0.01 }}
+              animate={{ scale: 1, opacity: 1 }}
+              onClick={() => handleClick()}
+            >
+              <span id="signin">Sign in</span>
+              <span id="ok">{arrow}</span>
+            </motion.div>
+          ) : (
+            <div id="signin-loading">
               <div id="loading">{loadsvg}</div>
-            ) : (
-              <>
-                <span id="signin">Sign in</span>
-                <span id="ok">{arrow}</span>
-              </>
-            )}
-          </motion.div>
+            </div>
+          )}
         </div>
       </div>
     </>
