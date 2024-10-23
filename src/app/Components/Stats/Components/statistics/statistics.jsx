@@ -155,7 +155,8 @@ export default function Statistics({
                       <div
                         id="bar"
                         style={{
-                          width: `${(stats?.data?.easySolved / 828) * 500}%`,
+                          width: `${(stats?.data?.easySolved / 828) * 100}%`,
+                          // width: `${(60/ 828) * 100}%`,
                           backgroundColor: "#28C244",
                         }}
                       ></div>
@@ -183,7 +184,8 @@ export default function Statistics({
                       <div
                         id="bar"
                         style={{
-                          width: `${(stats?.data?.mediumSolved / 1733) * 500}%`,
+                          width: `${(stats?.data?.mediumSolved / 1733) * 100}%`,
+                          // width: `${(68/ 1733) * 100}%`,
                           backgroundColor: "#FFA116",
                         }}
                       ></div>
@@ -211,7 +213,7 @@ export default function Statistics({
                       <div
                         id="bar"
                         style={{
-                          width: `${(stats?.data?.hardSolved / 752) * 500}%`,
+                          width: `${(stats?.data?.hardSolved / 752) * 150}%`,
                           backgroundColor: "#F63737",
                         }}
                       ></div>
