@@ -159,7 +159,8 @@
     }
   }
 
-  @media screen and (max-width: 1100px) {
+}
+@media screen and (max-width: 1100px) {
     #signin-container {
       #title {
         font-size: 12vw;
@@ -167,9 +168,11 @@
       }
       #dummy-signin {
         width: 64vw;
+        // background-color: red;
         #signin-button {
           width: 32vw;
           font-size: 4vw;
+          // background-color: red;
 
           &:hover {
             width: 14vw;
@@ -181,4 +184,3 @@
       }
     }
   }
-}
