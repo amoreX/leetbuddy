@@ -1,11 +1,10 @@
 ### LeetBuddy
- LeetBuddy
 
 LeetBuddy is a simple web app that makes it easier to connect and compete with your friends on LeetCode.
 
 Since LeetCode doesn’t offer any social features like friend lists or shared leaderboards, LeetBuddy fills that gap. With just a username and password (no email required), users can create an account, link their LeetCode profile using their username, and start tracking progress — not just theirs, but their friends’ too!
 
-##🚀 Features
+🚀 Features
 
   -   🔐 Instant Sign-Up
     No email required — just choose a username and password.
